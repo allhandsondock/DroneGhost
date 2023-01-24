@@ -55,4 +55,5 @@ resource fileStorage 'Microsoft.Storage/storageAccounts/fileServices/shares@2022
 
 output apiVersion string = strgneughostpri.apiVersion
 output strgAccId string = strgneughostpri.id
+output connStr string = 'DefaultEndpointsProtocol=https;AccountName=${storageAccountName};AccountKey=${listKeys(resourceId(resourceGroup().name, 'Microsoft.Storage/storageAccounts', storageAccountName), '2019-04-01').keys[0].value};EndpointSuffix=core.windows.net'
 

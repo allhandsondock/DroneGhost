@@ -14,6 +14,7 @@ param strgSKU string
 
 // App Service
 param appName string
+param azFuncAppName string
 
 
 // App Insight
@@ -102,6 +103,33 @@ module autoscale 'Modules/autoscale.bicep' = {
   dependsOn: [
     hostingPlanModule
     afd
+  ]
+}
+
+
+module azFuncApp 'Modules/azFunction.bicep' = if(deployafd) {
+  name: azFuncAppName
+  params:{
+    azFuncAsp: hostingPlanModule.outputs.aspConsumptionId
+    funcAppName: azFuncAppName
+    location: location
+  }
+  dependsOn:[
+    hostingPlanModule
+  ]
+    
+  
+}
+
+module azFuncAppSetting 'Modules/fnAppSettings.bicep' = if(deployafd) {
+  name: 'fnAppSetting'
+  params:{
+    fnAppName: azFuncAppName
+    aiKey: appInsightsModule.outputs.key
+    strgConn: storageModule.outputs.connStr
+  }
+  dependsOn:[
+    hostingPlanModule
   ]
 }
 

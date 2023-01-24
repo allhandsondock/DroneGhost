@@ -35,6 +35,9 @@
         },
         "deployafd": {
             "value": true
+        },
+        "azFuncAppName": {
+            "value": "fn-ghostadmin"
         }
 
     }

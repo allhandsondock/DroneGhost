@@ -37,4 +37,30 @@ resource hostingPlan 'Microsoft.Web/serverfarms@2022-03-01' = {
 }
 
 
+
+resource azFuncAsp 'Microsoft.Web/serverfarms@2022-03-01' = {
+  name: 'asp-consumption'
+  kind: 'functionapp'
+  location: location
+  properties: {
+    planName: 'VirtualDedicatedPlan'
+    kind: 'functionapp'
+    reserved: false
+    isXenon: false
+    hyperV: false
+    mdmId: 'waws-prod-blu-357_28628'
+    targetWorkerCount: 0
+    targetWorkerSizeId: 0
+    zoneRedundant: false
+  }
+  sku: {
+    name: 'Y1'
+    tier: 'Dynamic'
+    size: 'Y1'
+    family: 'Y'
+    capacity: 0
+  }
+}
+
 output resourceId string = hostingPlan.id
+output aspConsumptionId string = azFuncAsp.id
