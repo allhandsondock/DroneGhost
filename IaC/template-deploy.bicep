@@ -1,5 +1,6 @@
 param location string
 param environment string
+param tenantId string
 
 // App Service Plan 
 param aspName string
@@ -130,6 +131,19 @@ module azFuncAppSetting 'Modules/fnAppSettings.bicep' = if(deployafd) {
   }
   dependsOn:[
     hostingPlanModule
+  ]
+}
+
+module keyvault 'Modules/keyvault.bicep' = if(deployafd) {
+  name: 'keyvault-drone'
+  params:{
+    location: location
+    fnManagedIdentityId: azFuncApp.outputs.azFuncMI
+    tenantId: tenantId
+
+  }
+  dependsOn:[
+    azFuncApp
   ]
 }
 

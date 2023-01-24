@@ -3,6 +3,9 @@
     "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
+        "tenantId": {
+            "value": "db25c413-3357-4a8b-9bab-5e53ae062066"
+        },
         "location": {
             "value": "north europe"
         },
@@ -37,7 +40,7 @@
             "value": true
         },
         "azFuncAppName": {
-            "value": "fn-ghostadmin"
+            "value": "fnapp-ghostadmin"
         }
 
     }
