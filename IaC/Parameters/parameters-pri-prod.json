@@ -32,6 +32,9 @@
         },
         "aspSKU": {
             "value": "S1"
+        },
+        "deployafd": {
+            "value": true
         }
 
     }

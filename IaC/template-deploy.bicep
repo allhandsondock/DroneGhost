@@ -19,6 +19,8 @@ param appName string
 // App Insight
 param appInsightName string
 
+param deployafd bool
+
 module hostingPlanModule 'Modules/asp.bicep'= {
   name: aspName
   params:{
@@ -82,7 +84,7 @@ module appSettingsModule 'Modules/appSettingsConifg.bicep' = {
   ]
 }
 
-module afd 'Modules/afd.bicep' = {
+module afd 'Modules/afd.bicep' = if(deployafd) {
   name: 'afdapp'
   params:{
     afdname: 'afd-drone'
