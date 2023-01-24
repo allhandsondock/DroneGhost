@@ -40,7 +40,7 @@
             "value": true
         },
         "azFuncAppName": {
-            "value": "fnapp-ghostadmin"
+            "value": "fn-ghostadmin"
         }
 
     }

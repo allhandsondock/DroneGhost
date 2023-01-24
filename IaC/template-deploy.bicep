@@ -131,6 +131,7 @@ module azFuncAppSetting 'Modules/fnAppSettings.bicep' = if(deployafd) {
   }
   dependsOn:[
     hostingPlanModule
+    azFuncApp
   ]
 }
 
@@ -139,7 +140,6 @@ module keyvault 'Modules/keyvault.bicep' = if(deployafd) {
   params:{
     location: location
     fnManagedIdentityId: azFuncApp.outputs.azFuncMI
-    tenantId: tenantId
 
   }
   dependsOn:[

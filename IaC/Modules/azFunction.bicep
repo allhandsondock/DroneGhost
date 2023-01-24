@@ -52,5 +52,6 @@ resource ghostbackend 'Microsoft.Web/sites@2022-03-01' = {
 }
 
 output azFuncMI string = ghostbackend.identity.principalId
+output tenant string = ghostbackend.identity.tenantId
 
 

@@ -1,27 +1,22 @@
 param location string
 param fnManagedIdentityId  string
-param tenantId string
+
 
 
 resource kvproddrone 'Microsoft.KeyVault/vaults@2022-07-01' = {
-  name: 'kv-prod-drone'
+  name: 'kv-pri-prod'
   location: location
-  tags: {
-  }
+  
   properties: {
     sku: {
       family: 'A'
       name: 'standard'
     }
-    
     accessPolicies: [
-      
       {
-        tenantId: tenantId
         objectId: fnManagedIdentityId
+        tenantId: subscription().tenantId
         permissions: {
-          certificates: []
-          keys: []
           secrets: [
             'Get'
             'List'
@@ -42,5 +37,17 @@ resource kvproddrone 'Microsoft.KeyVault/vaults@2022-07-01' = {
     enableRbacAuthorization: false
     provisioningState: 'Succeeded'
     publicNetworkAccess: 'Enabled'
+    tenantId: subscription().tenantId
   }
 }
+
+
+// resource keyVaultAccessPolicy 'Microsoft.KeyVault/vaults/accessPolicies@2021-10-01' = {
+//   name: 'kv-prod/add'
+//   properties: {
+   
+//   }
+//   dependsOn:[
+//     kvproddrone
+//   ]
+// }
