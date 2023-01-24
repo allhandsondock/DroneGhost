@@ -4,16 +4,16 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "location": {
-            "value": "north europe"
+            "value": "east us"
         },
         "environment": {
-            "value": "primary-prod"
+            "value": "secondary-prod"
         },
         "aspName": {
-            "value": "asp-pri-linux"
+            "value": "asp-sec-linux"
         },
         "storageAccountName": {
-            "value": "strgprighost1"
+            "value": "strgpsecghost"
         },
         "shareName": {
             "value": "ghostcontent"
@@ -25,10 +25,10 @@
             "value": "Standard_RAGZRS"
         },
         "appName": {
-            "value": "wapp-pri-ghost"
+            "value": "wapp-sec-ghost"
         },
         "appInsightName": {
-            "value": "ai-wapp-pri"
+            "value": "ai-wapp-sec"
         },
         "aspSKU": {
             "value": "S1"
