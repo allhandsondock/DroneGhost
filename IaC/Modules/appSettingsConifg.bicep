@@ -23,3 +23,12 @@ resource storageSetting 'Microsoft.Web/sites/config@2021-01-15' = {
 
   }
 }
+
+resource appSetting 'Microsoft.Web/sites/config@2021-01-15' = {
+  name: '${appName}/appsettings'
+  properties: {
+    APPINSIGHTS_INSTRUMENTATIONKEY: aiKey
+    APPLICATIONINSIGHTS_CONNECTION_STRING: aiConnectionString
+
+  }
+}

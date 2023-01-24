@@ -82,4 +82,25 @@ module appSettingsModule 'Modules/appSettingsConifg.bicep' = {
   ]
 }
 
+module afd 'Modules/afd.bicep' = {
+  name: 'afdapp'
+  params:{
+    afdname: 'afd-drone'
+  }
+}
+
+module autoscale 'Modules/autoscale.bicep' = {
+  name: 'appautoscale'
+  params:{
+    location: location
+    afdFQDN: afd.outputs.afdfqdn
+    afdResourceUri: afd.outputs.afdResourceId
+    serverFarmUri: hostingPlanModule.outputs.resourceId
+  }
+  dependsOn: [
+    hostingPlanModule
+    afd
+  ]
+}
+
 

@@ -16,12 +16,13 @@ resource hostingPlan 'Microsoft.Web/serverfarms@2022-03-01' = {
     name: aspName
     workerSize: 'Default'
     currentWorkerSize: 'Default'
-    currentNumberOfWorkers: 4
+    currentNumberOfWorkers: 1
     planName: 'VirtualDedicatedPlan'
     computeMode: 'Dedicated'
     perSiteScaling: false
     elasticScaleEnabled: false
     maximumElasticWorkerCount: 4
+    targetWorkerCount: 1
     isSpot: false
     kind: 'linux'
     reserved: true
@@ -31,7 +32,7 @@ resource hostingPlan 'Microsoft.Web/serverfarms@2022-03-01' = {
     tier: 'Standard'
     size: aspSKU
     family: 'S'
-    capacity: 4
+    capacity: 1
   }
 }
 

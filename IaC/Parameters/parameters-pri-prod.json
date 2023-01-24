@@ -13,7 +13,7 @@
             "value": "asp-pri-linux"
         },
         "storageAccountName": {
-            "value": "strgprighost1"
+            "value": "strgprighost"
         },
         "shareName": {
             "value": "ghostcontent"

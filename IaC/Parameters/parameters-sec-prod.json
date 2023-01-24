@@ -13,7 +13,7 @@
             "value": "asp-sec-linux"
         },
         "storageAccountName": {
-            "value": "strgpsecghost"
+            "value": "strgpsecghost2"
         },
         "shareName": {
             "value": "ghostcontent"
