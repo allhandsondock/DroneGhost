@@ -19,7 +19,7 @@ The solution is designed with key focus high availability in terms that, it can 
 	```
 	cd <cloned-repo>
 	```
-4. Connect to your Azure Subscription using Connect-AzAccount. You may use a user account or ServicePrincipal with at lease 'Contributor' role on the resource groups where you want to provision resources
+4. Connect to your Azure Subscription using Connect-AzAccount. You may use a user account or ServicePrincipal with at least 'Contributor' role on the resource groups where you want to provision resources
 5. You would need 2 Resource Groups, one primary which will host the application all times and a secondary resource group which will be replica of primary but for disaster recovery scenario. Below cmd deploys resources in primary region.
 	```
 	New-AzResourceGroupDeployment -ResourceGroupName <primary-resourcegroup-name> -TemplateParameterFile ".\Parameters\parameters-pri-prod.json" -TemplateFile .\template-deploy.bicep -Mode Incremental
