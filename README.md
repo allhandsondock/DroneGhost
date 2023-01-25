@@ -15,7 +15,7 @@ The solution is designed with key focus high availability in terms that, it can 
 
 # Design
 1. The ghost app is hosted in an App Service container. It uses the docker image 'ghost:4-alpine' from docker hub registry
-2. The database of ghost is on Azure File share to make it persistent. Since there are 2 App Service in 2 different regions for handling disaster recovery, the db is synced using a Automation Runbook. 
+2. The database of ghost is on Azure File share to make it persistent. Since there are 2 App Service in 2 different regions for handling disaster recovery, the db is synced using a Automation Runbook scheduled to run hourly.
 3. An Azure front door is used for load balancing and high availability in case one region goes down.
 4. Admin service is used to delete all posts, which is hosted in Azure Functions. It references the GhostAdmin API Key from Azure Key Vault for security purposes.
 
