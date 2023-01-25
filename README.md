@@ -25,26 +25,12 @@ The solution is designed with key focus high availability in terms that, it can 
 	New-AzResourceGroupDeployment -ResourceGroupName <primary-resourcegroup-name> -TemplateParameterFile ".\Parameters\parameters-pri-prod.json" -TemplateFile .\template-deploy.bicep -Mode Incremental
 	```
 6. Run below to provision to secondary resource group. If you notice any error related to afdName, azFuncApp please ignore, as they are not part of deployment on secondary resource group.
-```
+	```
 	New-AzResourceGroupDeployment -ResourceGroupName <secondary-resourcegroup-name> -TemplateParameterFile ".\Parameters\parameters-sec-prod.json" -TemplateFile .\template-deploy.bicep -Mode Incremental
 	```
 7. Once 5 and 6 are successfully completed, navigate to your resource group and look for app services, wapp-pri-ghost-lab and wapp-sec-ghost-lab. Browse to https://wapp-pri-ghost-lab.azurewebsites.net/ and https://wapp-sec-ghost-lab.azurewebsites.net/ to see the ghost app running in different regions.
 
 
-## Switch to another file
 
-All your files and folders are presented as a tree in the file explorer. You can switch from one to another by clicking a file in the tree.
-
-## Rename a file
-
-You can rename the current file by clicking the file name in the navigation bar or by clicking the **Rename** button in the file explorer.
-
-## Delete a file
-
-You can delete the current file by clicking the **Remove** button in the file explorer. The file will be moved into the **Trash** folder and automatically deleted after 7 days of inactivity.
-
-## Export a file
-
-You can export the current file by clicking **Export to disk** in the menu. You can choose to export the file as plain Markdown, as HTML using a Handlebars template or as a PDF.
 
 
