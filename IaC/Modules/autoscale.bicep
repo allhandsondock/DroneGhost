@@ -50,6 +50,36 @@ resource autoscalesettings 'Microsoft.Insights/autoscalesettings@2022-10-01' = {
               value: '1'
             }
           }
+          {
+            metricTrigger: {
+              dimensions: [
+                {
+                  DimensionName: 'Endpoint'
+                  Operator: 'Equals'
+                  Values: [
+                    afdFQDN 
+                  ]
+                }
+              ]
+              dividePerInstance: false
+              metricName: 'OriginRequestCount'
+              metricNamespace: 'microsoft.cdn/profiles'
+              metricResourceUri: afdResourceUri
+              operator: 'LessThan'
+              statistic: 'Sum'
+              threshold: 50
+              timeAggregation: 'Average'
+              timeGrain: 'PT1M'
+              timeWindow: 'PT2M'
+              
+            }
+            scaleAction: {
+              cooldown: 'PT5M'
+              direction: 'Decrease'
+              type: 'ChangeCount'
+              value: '1'
+            }
+          }
         ]
       }
     ]

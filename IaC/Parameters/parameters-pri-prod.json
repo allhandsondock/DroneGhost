@@ -3,9 +3,6 @@
     "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "tenantId": {
-            "value": "db25c413-3357-4a8b-9bab-5e53ae062066"
-        },
         "location": {
             "value": "north europe"
         },
@@ -16,7 +13,7 @@
             "value": "asp-pri-linux"
         },
         "storageAccountName": {
-            "value": "strgprighost"
+            "value": "strgprighostlab"
         },
         "shareName": {
             "value": "ghostcontent"
@@ -28,10 +25,10 @@
             "value": "Standard_RAGZRS"
         },
         "appName": {
-            "value": "wapp-pri-ghost"
+            "value": "wapp-pri-ghost-lab"
         },
         "appInsightName": {
-            "value": "ai-wapp-pri"
+            "value": "ai-wapp-pri-lab"
         },
         "aspSKU": {
             "value": "S1"
@@ -40,7 +37,13 @@
             "value": true
         },
         "azFuncAppName": {
-            "value": "fn-ghostadmin"
+            "value": "fn-ghostadmin-lab"
+        },
+        "kvName": {
+            "value": "kv-pri-ghost-lab"
+        },
+        "afdName": {
+            "value": "afd-ghost-lab"
         }
 
     }

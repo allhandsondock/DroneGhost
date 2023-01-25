@@ -1,10 +1,11 @@
 param location string
 param fnManagedIdentityId  string
+param kvName string
 
 
 
 resource kvproddrone 'Microsoft.KeyVault/vaults@2022-07-01' = {
-  name: 'kv-pri-prod'
+  name: kvName
   location: location
   
   properties: {

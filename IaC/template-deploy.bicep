@@ -1,6 +1,5 @@
 param location string
 param environment string
-param tenantId string
 
 // App Service Plan 
 param aspName string
@@ -15,13 +14,15 @@ param strgSKU string
 
 // App Service
 param appName string
-param azFuncAppName string
+param azFuncAppName string 
 
 
 // App Insight
 param appInsightName string
 
 param deployafd bool
+param kvName string 
+param afdName string 
 
 module hostingPlanModule 'Modules/asp.bicep'= {
   name: aspName
@@ -87,9 +88,9 @@ module appSettingsModule 'Modules/appSettingsConifg.bicep' = {
 }
 
 module afd 'Modules/afd.bicep' = if(deployafd) {
-  name: 'afdapp'
+  name: 'afdName'
   params:{
-    afdname: 'afd-drone'
+    afdname: afdName
   }
 }
 
@@ -109,7 +110,7 @@ module autoscale 'Modules/autoscale.bicep' = {
 
 
 module azFuncApp 'Modules/azFunction.bicep' = if(deployafd) {
-  name: azFuncAppName
+  name: 'azFuncApp'
   params:{
     azFuncAsp: hostingPlanModule.outputs.aspConsumptionId
     funcAppName: azFuncAppName
@@ -138,6 +139,7 @@ module azFuncAppSetting 'Modules/fnAppSettings.bicep' = if(deployafd) {
 module keyvault 'Modules/keyvault.bicep' = if(deployafd) {
   name: 'keyvault-drone'
   params:{
+    kvName: kvName
     location: location
     fnManagedIdentityId: azFuncApp.outputs.azFuncMI
 
