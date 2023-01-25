@@ -1,4 +1,5 @@
 
+
 # Drone Shuttles - Blogging Platform on Ghost
 
 This solution lists the code required to setup a blogging platform powered by Ghost onto Azure. It also has a 'AdminService' which is a serverless function to delete all posts.
@@ -10,6 +11,13 @@ The solution is designed with key focus high availability in terms that, it can 
 1. Powershell - https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows?view=powershell-7.3
 2. Az module - https://learn.microsoft.com/en-us/powershell/azure/install-az-ps?view=azps-9.3.0
 3. Git
+
+
+# Design
+1. The ghost app is hosted in an App Service container. It uses the docker image 'ghost:4-alpine' from docker hub registry
+2. The database of ghost is on Azure File share to make it persistent. Since there are 2 App Service in 2 different regions for handling disaster recovery, the db is synced using a Automation Runbook. 
+3. An Azure front door is used for load balancing and high availability in case one region goes down.
+4. Admin service is used to delete all posts, which is hosted in Azure Functions. It references the GhostAdmin API Key from Azure Key Vault for security purposes.
 
 ## Usage
 
@@ -29,6 +37,9 @@ The solution is designed with key focus high availability in terms that, it can 
 	New-AzResourceGroupDeployment -ResourceGroupName <secondary-resourcegroup-name> -TemplateParameterFile ".\Parameters\parameters-sec-prod.json" -TemplateFile .\template-deploy.bicep -Mode Incremental
 	```
 7. Once 5 and 6 are successfully completed, navigate to your resource group and look for app services, wapp-pri-ghost-lab and wapp-sec-ghost-lab. Browse to https://wapp-pri-ghost-lab.azurewebsites.net/ and https://wapp-sec-ghost-lab.azurewebsites.net/ to see the ghost app running in different regions.
+
+
+
 
 
 
