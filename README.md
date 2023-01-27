@@ -72,8 +72,6 @@ The solution is designed with key focus high availability in terms that, it can 
 
 -Monitor activity  and  logging
 
-<![if ppt]>-<![endif]>
-
 12.  App  Service  Plan
 
 - A hosting environment for app service to handle production workload in secondary region
