@@ -70,7 +70,7 @@ The solution is designed with key focus high availability in terms that, it can 
 
 11.App  Insights
 
--Monitor activity  and  logging
+- Monitor activity  and  logging
 
 12.  App  Service  Plan
 
