@@ -34,7 +34,7 @@ The solution is designed with key focus high availability in terms that, it can 
 
 2.App Service
 
-- Ghost hosted on Containers in primary region
+- Ghost hosted on App Service Containers in primary region
 
 3.Azure File Share
 
