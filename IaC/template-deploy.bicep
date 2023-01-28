@@ -20,7 +20,7 @@ param azFuncAppName string
 // App Insight
 param appInsightName string
 
-param deployafd bool
+param isPrimary bool
 param kvName string 
 param afdName string 
 
@@ -87,10 +87,11 @@ module appSettingsModule 'Modules/appSettingsConifg.bicep' = {
   ]
 }
 
-module afd 'Modules/afd.bicep' = if(deployafd) {
+module afd 'Modules/afd.bicep' = if(isPrimary) {
   name: 'afdName'
   params:{
     afdname: afdName
+    isPrimary: isPrimary
   }
 }
 
@@ -109,12 +110,13 @@ module autoscale 'Modules/autoscale.bicep' = {
 }
 
 
-module azFuncApp 'Modules/azFunction.bicep' = if(deployafd) {
+module azFuncApp 'Modules/azFunction.bicep' = if(isPrimary) {
   name: 'azFuncApp'
   params:{
     azFuncAsp: hostingPlanModule.outputs.aspConsumptionId
     funcAppName: azFuncAppName
     location: location
+    isPrimary: isPrimary
   }
   dependsOn:[
     hostingPlanModule
@@ -123,7 +125,7 @@ module azFuncApp 'Modules/azFunction.bicep' = if(deployafd) {
   
 }
 
-module azFuncAppSetting 'Modules/fnAppSettings.bicep' = if(deployafd) {
+module azFuncAppSetting 'Modules/fnAppSettings.bicep' = if(isPrimary) {
   name: 'fnAppSetting'
   params:{
     fnAppName: azFuncAppName
@@ -136,7 +138,7 @@ module azFuncAppSetting 'Modules/fnAppSettings.bicep' = if(deployafd) {
   ]
 }
 
-module keyvault 'Modules/keyvault.bicep' = if(deployafd) {
+module keyvault 'Modules/keyvault.bicep' = if(isPrimary) {
   name: 'keyvault-drone'
   params:{
     kvName: kvName

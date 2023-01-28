@@ -2,8 +2,9 @@
 param azFuncAsp string
 param funcAppName string
 param location string
+param isPrimary bool
 
-resource ghostbackend 'Microsoft.Web/sites@2022-03-01' = {
+resource ghostbackend 'Microsoft.Web/sites@2022-03-01' = if(isPrimary) {
   name: funcAppName
   kind: 'functionapp'
   location: location

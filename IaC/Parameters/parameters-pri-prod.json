@@ -33,14 +33,14 @@
         "aspSKU": {
             "value": "S1"
         },
-        "deployafd": {
+        "isPrimary": {
             "value": true
         },
         "azFuncAppName": {
             "value": "fn-ghostadmin-lab"
         },
         "kvName": {
-            "value": "kv-pri-ghost-lab"
+            "value": "kv-pri-ghost-lab1"
         },
         "afdName": {
             "value": "afd-ghost-lab"

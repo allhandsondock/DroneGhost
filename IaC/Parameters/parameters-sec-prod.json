@@ -33,7 +33,7 @@
         "aspSKU": {
             "value": "S1"
         },
-        "deployafd": {
+        "isPrimary": {
             "value": false
         },
         "azFuncAppName": {

@@ -1,9 +1,10 @@
 
 param afdname string
+param isPrimary bool
 
 
 @description('Azure Front door')
-resource afdghost 'Microsoft.Cdn/profiles@2022-05-01-preview' = {
+resource afdghost 'Microsoft.Cdn/profiles@2022-05-01-preview' = if(isPrimary) {
   name: afdname
   location: 'Global'
   tags: {
