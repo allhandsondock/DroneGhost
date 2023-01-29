@@ -96,6 +96,8 @@ The solution is designed with key focus high availability in terms that, it can 
 	```
 7. Once 5 and 6 are successfully completed, navigate to your resource group and look for app services, wapp-pri-ghost-lab and wapp-sec-ghost-lab. Browse to https://wapp-pri-ghost-lab.azurewebsites.net/ and https://wapp-sec-ghost-lab.azurewebsites.net/ to see the ghost app running in different regions.
 
+7. To set up db syc between primary and secondary region, deploy/import the 'dbsync.ps1' to the runbook 'psghostdbsync' provisioned in the primary region.
+
 
 
 
