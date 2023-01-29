@@ -151,4 +151,11 @@ module keyvault 'Modules/keyvault.bicep' = if(isPrimary) {
   ]
 }
 
+module runbook 'Modules/runbook.bicep' = if(isPrimary) {
+  name: 'azGhostRunbook'
+  params:{
+    location: location
+  }
+}
+
 
