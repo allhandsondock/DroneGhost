@@ -52,3 +52,4 @@ resource appneughostpri 'Microsoft.Web/sites@2022-03-01' = {
 }
 
 
+output appUrl string = 'https://${appneughostpri.properties.defaultHostName}'

@@ -78,6 +78,7 @@ module appSettingsModule 'Modules/appSettingsConifg.bicep' = {
     storageAccountid: storageModule.outputs.strgAccId
     aiConnectionString: appInsightsModule.outputs.connString
     aiKey: appInsightsModule.outputs.key
+    url: appService.outputs.appUrl
 
   }
   dependsOn:[

@@ -6,6 +6,7 @@ param storageAccountid string
 param storageAccountapiVersion string
 param aiConnectionString string
 param aiKey string
+param url string
 
 
 resource storageSetting 'Microsoft.Web/sites/config@2021-01-15' = {
@@ -29,6 +30,7 @@ resource appSetting 'Microsoft.Web/sites/config@2021-01-15' = {
   properties: {
     APPINSIGHTS_INSTRUMENTATIONKEY: aiKey
     APPLICATIONINSIGHTS_CONNECTION_STRING: aiConnectionString
+    url: url
 
   }
 }
